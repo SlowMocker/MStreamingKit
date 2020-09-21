@@ -1,0 +1,374 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FF327CF0251870A700036C4D /* STKCoreFoundationDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FF327CDD251870A600036C4D /* STKCoreFoundationDataSource.m */; };
+		FF327CF1251870A700036C4D /* STKQueueEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = FF327CDF251870A600036C4D /* STKQueueEntry.m */; };
+		FF327CF2251870A700036C4D /* STKDataSourceWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = FF327CE0251870A600036C4D /* STKDataSourceWrapper.m */; };
+		FF327CF3251870A700036C4D /* NSMutableArray+STKAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF327CE2251870A600036C4D /* NSMutableArray+STKAudioPlayer.m */; };
+		FF327CF4251870A700036C4D /* STKLocalFileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FF327CE3251870A600036C4D /* STKLocalFileDataSource.m */; };
+		FF327CF5251870A700036C4D /* STKAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF327CE7251870A700036C4D /* STKAudioPlayer.m */; };
+		FF327CF6251870A700036C4D /* STKHTTPDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FF327CE9251870A700036C4D /* STKHTTPDataSource.m */; };
+		FF327CF7251870A700036C4D /* STKDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FF327CEE251870A700036C4D /* STKDataSource.m */; };
+		FF327CF8251870A700036C4D /* STKAutoRecoveringHTTPDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FF327CEF251870A700036C4D /* STKAutoRecoveringHTTPDataSource.m */; };
+		FF327CFA251870CE00036C4D /* NSMutableArray+STKAudioPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = FF327CE1251870A600036C4D /* NSMutableArray+STKAudioPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF327CFB251870CE00036C4D /* STKAudioPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = FF327CEB251870A700036C4D /* STKAudioPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF327CFC251870CE00036C4D /* STKAutoRecoveringHTTPDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = FF327CE8251870A700036C4D /* STKAutoRecoveringHTTPDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF327CFD251870CE00036C4D /* STKCoreFoundationDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = FF327CDC251870A600036C4D /* STKCoreFoundationDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF327CFE251870CE00036C4D /* STKDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = FF327CE6251870A700036C4D /* STKDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF327CFF251870CE00036C4D /* STKDataSourceWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = FF327CEC251870A700036C4D /* STKDataSourceWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF327D00251870CE00036C4D /* STKHTTPDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = FF327CEA251870A700036C4D /* STKHTTPDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF327D01251870CE00036C4D /* STKLocalFileDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = FF327CED251870A700036C4D /* STKLocalFileDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF327D02251870CE00036C4D /* STKMacro.h in Headers */ = {isa = PBXBuildFile; fileRef = FF327CDE251870A600036C4D /* STKMacro.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF327D03251870CE00036C4D /* STKQueueEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = FF327CE4251870A700036C4D /* STKQueueEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF327D04251870CE00036C4D /* STKSpinLock.h in Headers */ = {isa = PBXBuildFile; fileRef = FF327CE5251870A700036C4D /* STKSpinLock.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FF327CCE2518703C00036C4D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		FF327CD02518703C00036C4D /* libStreamingKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libStreamingKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF327CDC251870A600036C4D /* STKCoreFoundationDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKCoreFoundationDataSource.h; sourceTree = "<group>"; };
+		FF327CDD251870A600036C4D /* STKCoreFoundationDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKCoreFoundationDataSource.m; sourceTree = "<group>"; };
+		FF327CDE251870A600036C4D /* STKMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKMacro.h; sourceTree = "<group>"; };
+		FF327CDF251870A600036C4D /* STKQueueEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKQueueEntry.m; sourceTree = "<group>"; };
+		FF327CE0251870A600036C4D /* STKDataSourceWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKDataSourceWrapper.m; sourceTree = "<group>"; };
+		FF327CE1251870A600036C4D /* NSMutableArray+STKAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+STKAudioPlayer.h"; sourceTree = "<group>"; };
+		FF327CE2251870A600036C4D /* NSMutableArray+STKAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+STKAudioPlayer.m"; sourceTree = "<group>"; };
+		FF327CE3251870A600036C4D /* STKLocalFileDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKLocalFileDataSource.m; sourceTree = "<group>"; };
+		FF327CE4251870A700036C4D /* STKQueueEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKQueueEntry.h; sourceTree = "<group>"; };
+		FF327CE5251870A700036C4D /* STKSpinLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKSpinLock.h; sourceTree = "<group>"; };
+		FF327CE6251870A700036C4D /* STKDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKDataSource.h; sourceTree = "<group>"; };
+		FF327CE7251870A700036C4D /* STKAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKAudioPlayer.m; sourceTree = "<group>"; };
+		FF327CE8251870A700036C4D /* STKAutoRecoveringHTTPDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKAutoRecoveringHTTPDataSource.h; sourceTree = "<group>"; };
+		FF327CE9251870A700036C4D /* STKHTTPDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKHTTPDataSource.m; sourceTree = "<group>"; };
+		FF327CEA251870A700036C4D /* STKHTTPDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKHTTPDataSource.h; sourceTree = "<group>"; };
+		FF327CEB251870A700036C4D /* STKAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKAudioPlayer.h; sourceTree = "<group>"; };
+		FF327CEC251870A700036C4D /* STKDataSourceWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKDataSourceWrapper.h; sourceTree = "<group>"; };
+		FF327CED251870A700036C4D /* STKLocalFileDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKLocalFileDataSource.h; sourceTree = "<group>"; };
+		FF327CEE251870A700036C4D /* STKDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKDataSource.m; sourceTree = "<group>"; };
+		FF327CEF251870A700036C4D /* STKAutoRecoveringHTTPDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKAutoRecoveringHTTPDataSource.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FF327CCD2518703C00036C4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FF327CC72518703C00036C4D = {
+			isa = PBXGroup;
+			children = (
+				FF327CD22518703C00036C4D /* StreamingKit */,
+				FF327CD12518703C00036C4D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FF327CD12518703C00036C4D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF327CD02518703C00036C4D /* libStreamingKit.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FF327CD22518703C00036C4D /* StreamingKit */ = {
+			isa = PBXGroup;
+			children = (
+				FF327CE1251870A600036C4D /* NSMutableArray+STKAudioPlayer.h */,
+				FF327CE2251870A600036C4D /* NSMutableArray+STKAudioPlayer.m */,
+				FF327CEB251870A700036C4D /* STKAudioPlayer.h */,
+				FF327CE7251870A700036C4D /* STKAudioPlayer.m */,
+				FF327CE8251870A700036C4D /* STKAutoRecoveringHTTPDataSource.h */,
+				FF327CEF251870A700036C4D /* STKAutoRecoveringHTTPDataSource.m */,
+				FF327CDC251870A600036C4D /* STKCoreFoundationDataSource.h */,
+				FF327CDD251870A600036C4D /* STKCoreFoundationDataSource.m */,
+				FF327CE6251870A700036C4D /* STKDataSource.h */,
+				FF327CEE251870A700036C4D /* STKDataSource.m */,
+				FF327CEC251870A700036C4D /* STKDataSourceWrapper.h */,
+				FF327CE0251870A600036C4D /* STKDataSourceWrapper.m */,
+				FF327CEA251870A700036C4D /* STKHTTPDataSource.h */,
+				FF327CE9251870A700036C4D /* STKHTTPDataSource.m */,
+				FF327CED251870A700036C4D /* STKLocalFileDataSource.h */,
+				FF327CE3251870A600036C4D /* STKLocalFileDataSource.m */,
+				FF327CDE251870A600036C4D /* STKMacro.h */,
+				FF327CE4251870A700036C4D /* STKQueueEntry.h */,
+				FF327CDF251870A600036C4D /* STKQueueEntry.m */,
+				FF327CE5251870A700036C4D /* STKSpinLock.h */,
+			);
+			path = StreamingKit;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		FF327CF9251870BF00036C4D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF327CFA251870CE00036C4D /* NSMutableArray+STKAudioPlayer.h in Headers */,
+				FF327CFB251870CE00036C4D /* STKAudioPlayer.h in Headers */,
+				FF327CFC251870CE00036C4D /* STKAutoRecoveringHTTPDataSource.h in Headers */,
+				FF327CFD251870CE00036C4D /* STKCoreFoundationDataSource.h in Headers */,
+				FF327CFE251870CE00036C4D /* STKDataSource.h in Headers */,
+				FF327CFF251870CE00036C4D /* STKDataSourceWrapper.h in Headers */,
+				FF327D00251870CE00036C4D /* STKHTTPDataSource.h in Headers */,
+				FF327D01251870CE00036C4D /* STKLocalFileDataSource.h in Headers */,
+				FF327D02251870CE00036C4D /* STKMacro.h in Headers */,
+				FF327D03251870CE00036C4D /* STKQueueEntry.h in Headers */,
+				FF327D04251870CE00036C4D /* STKSpinLock.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		FF327CCF2518703C00036C4D /* StreamingKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF327CD92518703C00036C4D /* Build configuration list for PBXNativeTarget "StreamingKit" */;
+			buildPhases = (
+				FF327CF9251870BF00036C4D /* Headers */,
+				FF327CCC2518703C00036C4D /* Sources */,
+				FF327CCD2518703C00036C4D /* Frameworks */,
+				FF327CCE2518703C00036C4D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StreamingKit;
+			productName = StreamingKit;
+			productReference = FF327CD02518703C00036C4D /* libStreamingKit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FF327CC82518703C00036C4D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = iSmicro;
+				TargetAttributes = {
+					FF327CCF2518703C00036C4D = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = FF327CCB2518703C00036C4D /* Build configuration list for PBXProject "StreamingKit" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FF327CC72518703C00036C4D;
+			productRefGroup = FF327CD12518703C00036C4D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FF327CCF2518703C00036C4D /* StreamingKit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FF327CCC2518703C00036C4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF327CF3251870A700036C4D /* NSMutableArray+STKAudioPlayer.m in Sources */,
+				FF327CF6251870A700036C4D /* STKHTTPDataSource.m in Sources */,
+				FF327CF2251870A700036C4D /* STKDataSourceWrapper.m in Sources */,
+				FF327CF0251870A700036C4D /* STKCoreFoundationDataSource.m in Sources */,
+				FF327CF1251870A700036C4D /* STKQueueEntry.m in Sources */,
+				FF327CF5251870A700036C4D /* STKAudioPlayer.m in Sources */,
+				FF327CF8251870A700036C4D /* STKAutoRecoveringHTTPDataSource.m in Sources */,
+				FF327CF4251870A700036C4D /* STKLocalFileDataSource.m in Sources */,
+				FF327CF7251870A700036C4D /* STKDataSource.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FF327CD72518703C00036C4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FF327CD82518703C00036C4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FF327CDA2518703C00036C4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2CTFS25UCD;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FF327CDB2518703C00036C4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2CTFS25UCD;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FF327CCB2518703C00036C4D /* Build configuration list for PBXProject "StreamingKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF327CD72518703C00036C4D /* Debug */,
+				FF327CD82518703C00036C4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF327CD92518703C00036C4D /* Build configuration list for PBXNativeTarget "StreamingKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF327CDA2518703C00036C4D /* Debug */,
+				FF327CDB2518703C00036C4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FF327CC82518703C00036C4D /* Project object */;
+}
