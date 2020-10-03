@@ -33,7 +33,7 @@
 **********************************************************************************/
 
 #import "STKDataSource.h"
-#import "Downloader.h"
+#import "STKAFNetworking.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -55,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 /// 数据 session
-@property (nonatomic , strong) AFHTTPSessionManager * __nullable dataSession;
+@property (nonatomic , strong) STKAFHTTPSessionManager * __nullable dataSession;
 @property (atomic , strong) NSMutableData * __nullable dataM;
 
 @property (readonly) BOOL isInErrorState;

@@ -27,6 +27,20 @@
 		FF327D02251870CE00036C4D /* STKMacro.h in Headers */ = {isa = PBXBuildFile; fileRef = FF327CDE251870A600036C4D /* STKMacro.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FF327D03251870CE00036C4D /* STKQueueEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = FF327CE4251870A700036C4D /* STKQueueEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FF327D04251870CE00036C4D /* STKSpinLock.h in Headers */ = {isa = PBXBuildFile; fileRef = FF327CE5251870A700036C4D /* STKSpinLock.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF6D7A4025281097001F4186 /* STKAFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6D7A3225281096001F4186 /* STKAFSecurityPolicy.m */; };
+		FF6D7A4125281097001F4186 /* STKAFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6D7A3325281096001F4186 /* STKAFNetworkReachabilityManager.m */; };
+		FF6D7A4225281097001F4186 /* STKAFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6D7A3425281096001F4186 /* STKAFNetworking.h */; };
+		FF6D7A4325281097001F4186 /* STKAFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6D7A3525281096001F4186 /* STKAFHTTPSessionManager.m */; };
+		FF6D7A4425281097001F4186 /* STKAFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6D7A3625281096001F4186 /* STKAFURLResponseSerialization.m */; };
+		FF6D7A4525281097001F4186 /* STKAFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6D7A3725281096001F4186 /* STKAFURLSessionManager.m */; };
+		FF6D7A4625281097001F4186 /* STKAFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6D7A3825281096001F4186 /* STKAFHTTPSessionManager.h */; };
+		FF6D7A4725281097001F4186 /* STKAFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6D7A3925281096001F4186 /* STKAFURLSessionManager.h */; };
+		FF6D7A4825281097001F4186 /* STKAFCompatibilityMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6D7A3A25281096001F4186 /* STKAFCompatibilityMacros.h */; };
+		FF6D7A4925281097001F4186 /* STKAFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6D7A3B25281096001F4186 /* STKAFURLRequestSerialization.m */; };
+		FF6D7A4A25281097001F4186 /* STKAFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6D7A3C25281096001F4186 /* STKAFNetworkReachabilityManager.h */; };
+		FF6D7A4B25281097001F4186 /* STKAFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6D7A3D25281097001F4186 /* STKAFURLResponseSerialization.h */; };
+		FF6D7A4C25281097001F4186 /* STKAFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6D7A3E25281097001F4186 /* STKAFURLRequestSerialization.h */; };
+		FF6D7A4D25281097001F4186 /* STKAFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6D7A3F25281097001F4186 /* STKAFSecurityPolicy.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -63,6 +77,21 @@
 		FF327CED251870A700036C4D /* STKLocalFileDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKLocalFileDataSource.h; sourceTree = "<group>"; };
 		FF327CEE251870A700036C4D /* STKDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKDataSource.m; sourceTree = "<group>"; };
 		FF327CEF251870A700036C4D /* STKAutoRecoveringHTTPDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKAutoRecoveringHTTPDataSource.m; sourceTree = "<group>"; };
+		FF6D7A05252807DF001F4186 /* libMOSINetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMOSINetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF6D7A3225281096001F4186 /* STKAFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKAFSecurityPolicy.m; sourceTree = "<group>"; };
+		FF6D7A3325281096001F4186 /* STKAFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKAFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		FF6D7A3425281096001F4186 /* STKAFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKAFNetworking.h; sourceTree = "<group>"; };
+		FF6D7A3525281096001F4186 /* STKAFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKAFHTTPSessionManager.m; sourceTree = "<group>"; };
+		FF6D7A3625281096001F4186 /* STKAFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKAFURLResponseSerialization.m; sourceTree = "<group>"; };
+		FF6D7A3725281096001F4186 /* STKAFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKAFURLSessionManager.m; sourceTree = "<group>"; };
+		FF6D7A3825281096001F4186 /* STKAFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKAFHTTPSessionManager.h; sourceTree = "<group>"; };
+		FF6D7A3925281096001F4186 /* STKAFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKAFURLSessionManager.h; sourceTree = "<group>"; };
+		FF6D7A3A25281096001F4186 /* STKAFCompatibilityMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKAFCompatibilityMacros.h; sourceTree = "<group>"; };
+		FF6D7A3B25281096001F4186 /* STKAFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKAFURLRequestSerialization.m; sourceTree = "<group>"; };
+		FF6D7A3C25281096001F4186 /* STKAFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKAFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		FF6D7A3D25281097001F4186 /* STKAFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKAFURLResponseSerialization.h; sourceTree = "<group>"; };
+		FF6D7A3E25281097001F4186 /* STKAFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKAFURLRequestSerialization.h; sourceTree = "<group>"; };
+		FF6D7A3F25281097001F4186 /* STKAFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKAFSecurityPolicy.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +110,7 @@
 			children = (
 				FF327CD22518703C00036C4D /* StreamingKit */,
 				FF327CD12518703C00036C4D /* Products */,
+				FF6D7A04252807DF001F4186 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,11 +142,41 @@
 				FF327CED251870A700036C4D /* STKLocalFileDataSource.h */,
 				FF327CE3251870A600036C4D /* STKLocalFileDataSource.m */,
 				FF327CDE251870A600036C4D /* STKMacro.h */,
+				FF6D7A1525280FE8001F4186 /* STKNetworking */,
 				FF327CE4251870A700036C4D /* STKQueueEntry.h */,
 				FF327CDF251870A600036C4D /* STKQueueEntry.m */,
 				FF327CE5251870A700036C4D /* STKSpinLock.h */,
 			);
 			path = StreamingKit;
+			sourceTree = "<group>";
+		};
+		FF6D7A04252807DF001F4186 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FF6D7A05252807DF001F4186 /* libMOSINetworking.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FF6D7A1525280FE8001F4186 /* STKNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				FF6D7A3A25281096001F4186 /* STKAFCompatibilityMacros.h */,
+				FF6D7A3825281096001F4186 /* STKAFHTTPSessionManager.h */,
+				FF6D7A3525281096001F4186 /* STKAFHTTPSessionManager.m */,
+				FF6D7A3425281096001F4186 /* STKAFNetworking.h */,
+				FF6D7A3C25281096001F4186 /* STKAFNetworkReachabilityManager.h */,
+				FF6D7A3325281096001F4186 /* STKAFNetworkReachabilityManager.m */,
+				FF6D7A3F25281097001F4186 /* STKAFSecurityPolicy.h */,
+				FF6D7A3225281096001F4186 /* STKAFSecurityPolicy.m */,
+				FF6D7A3E25281097001F4186 /* STKAFURLRequestSerialization.h */,
+				FF6D7A3B25281096001F4186 /* STKAFURLRequestSerialization.m */,
+				FF6D7A3D25281097001F4186 /* STKAFURLResponseSerialization.h */,
+				FF6D7A3625281096001F4186 /* STKAFURLResponseSerialization.m */,
+				FF6D7A3925281096001F4186 /* STKAFURLSessionManager.h */,
+				FF6D7A3725281096001F4186 /* STKAFURLSessionManager.m */,
+			);
+			path = STKNetworking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,14 +186,22 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF6D7A4B25281097001F4186 /* STKAFURLResponseSerialization.h in Headers */,
 				FF327CFA251870CE00036C4D /* NSMutableArray+STKAudioPlayer.h in Headers */,
 				FF327CFB251870CE00036C4D /* STKAudioPlayer.h in Headers */,
+				FF6D7A4A25281097001F4186 /* STKAFNetworkReachabilityManager.h in Headers */,
 				FF327CFC251870CE00036C4D /* STKAutoRecoveringHTTPDataSource.h in Headers */,
 				FF327CFD251870CE00036C4D /* STKCoreFoundationDataSource.h in Headers */,
 				FF327CFE251870CE00036C4D /* STKDataSource.h in Headers */,
 				FF327CFF251870CE00036C4D /* STKDataSourceWrapper.h in Headers */,
 				FF327D00251870CE00036C4D /* STKHTTPDataSource.h in Headers */,
+				FF6D7A4725281097001F4186 /* STKAFURLSessionManager.h in Headers */,
+				FF6D7A4625281097001F4186 /* STKAFHTTPSessionManager.h in Headers */,
+				FF6D7A4C25281097001F4186 /* STKAFURLRequestSerialization.h in Headers */,
 				FF327D01251870CE00036C4D /* STKLocalFileDataSource.h in Headers */,
+				FF6D7A4225281097001F4186 /* STKAFNetworking.h in Headers */,
+				FF6D7A4D25281097001F4186 /* STKAFSecurityPolicy.h in Headers */,
+				FF6D7A4825281097001F4186 /* STKAFCompatibilityMacros.h in Headers */,
 				FF327D02251870CE00036C4D /* STKMacro.h in Headers */,
 				FF327D03251870CE00036C4D /* STKQueueEntry.h in Headers */,
 				FF327D04251870CE00036C4D /* STKSpinLock.h in Headers */,
@@ -198,6 +266,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF6D7A4925281097001F4186 /* STKAFURLRequestSerialization.m in Sources */,
+				FF6D7A4325281097001F4186 /* STKAFHTTPSessionManager.m in Sources */,
+				FF6D7A4125281097001F4186 /* STKAFNetworkReachabilityManager.m in Sources */,
 				FF327CF3251870A700036C4D /* NSMutableArray+STKAudioPlayer.m in Sources */,
 				FF327CF6251870A700036C4D /* STKHTTPDataSource.m in Sources */,
 				FF327CF2251870A700036C4D /* STKDataSourceWrapper.m in Sources */,
@@ -205,7 +276,10 @@
 				FF327CF1251870A700036C4D /* STKQueueEntry.m in Sources */,
 				FF327CF5251870A700036C4D /* STKAudioPlayer.m in Sources */,
 				FF327CF8251870A700036C4D /* STKAutoRecoveringHTTPDataSource.m in Sources */,
+				FF6D7A4025281097001F4186 /* STKAFSecurityPolicy.m in Sources */,
+				FF6D7A4525281097001F4186 /* STKAFURLSessionManager.m in Sources */,
 				FF327CF4251870A700036C4D /* STKLocalFileDataSource.m in Sources */,
+				FF6D7A4425281097001F4186 /* STKAFURLResponseSerialization.m in Sources */,
 				FF327CF7251870A700036C4D /* STKDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

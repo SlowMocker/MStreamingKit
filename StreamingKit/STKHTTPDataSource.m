@@ -34,7 +34,6 @@
 
 #import "STKHTTPDataSource.h"
 #import "STKLocalFileDataSource.h"
-#import "Downloader.h"
 
 @interface STKHTTPDataSource()
 {
@@ -446,7 +445,7 @@
         [request addValue:@"1" forHTTPHeaderField:@"Icy-MetaData"];
         
         __weak typeof(self) weakSelf = self;
-        self.dataSession  = [AFHTTPSessionManager manager];
+        self.dataSession  = [STKAFHTTPSessionManager manager];
         NSURLSessionDataTask *dataTask = [self.dataSession dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
             
             // 请求结束
