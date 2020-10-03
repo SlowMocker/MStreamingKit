@@ -27,15 +27,37 @@
 		FF327D02251870CE00036C4D /* STKMacro.h in Headers */ = {isa = PBXBuildFile; fileRef = FF327CDE251870A600036C4D /* STKMacro.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FF327D03251870CE00036C4D /* STKQueueEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = FF327CE4251870A700036C4D /* STKQueueEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FF327D04251870CE00036C4D /* STKSpinLock.h in Headers */ = {isa = PBXBuildFile; fileRef = FF327CE5251870A700036C4D /* STKSpinLock.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF6D7A4E25281399001F4186 /* NSMutableArray+STKAudioPlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF327CE1251870A600036C4D /* NSMutableArray+STKAudioPlayer.h */; };
+		FF6D7A4F25281399001F4186 /* STKAudioPlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF327CEB251870A700036C4D /* STKAudioPlayer.h */; };
+		FF6D7A5025281399001F4186 /* STKAutoRecoveringHTTPDataSource.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF327CE8251870A700036C4D /* STKAutoRecoveringHTTPDataSource.h */; };
+		FF6D7A5125281399001F4186 /* STKCoreFoundationDataSource.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF327CDC251870A600036C4D /* STKCoreFoundationDataSource.h */; };
+		FF6D7A5225281399001F4186 /* STKDataSource.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF327CE6251870A700036C4D /* STKDataSource.h */; };
+		FF6D7A5325281399001F4186 /* STKDataSourceWrapper.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF327CEC251870A700036C4D /* STKDataSourceWrapper.h */; };
+		FF6D7A5425281399001F4186 /* STKHTTPDataSource.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF327CEA251870A700036C4D /* STKHTTPDataSource.h */; };
+		FF6D7A5525281399001F4186 /* STKLocalFileDataSource.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF327CED251870A700036C4D /* STKLocalFileDataSource.h */; };
+		FF6D7A5625281399001F4186 /* STKMacro.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF327CDE251870A600036C4D /* STKMacro.h */; };
+		FF6D7A5725281399001F4186 /* STKQueueEntry.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF327CE4251870A700036C4D /* STKQueueEntry.h */; };
+		FF6D7A5825281399001F4186 /* STKSpinLock.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF327CE5251870A700036C4D /* STKSpinLock.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		FF327CCE2518703C00036C4D /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
+			dstPath = include;
 			dstSubfolderSpec = 16;
 			files = (
+				FF6D7A4E25281399001F4186 /* NSMutableArray+STKAudioPlayer.h in CopyFiles */,
+				FF6D7A4F25281399001F4186 /* STKAudioPlayer.h in CopyFiles */,
+				FF6D7A5025281399001F4186 /* STKAutoRecoveringHTTPDataSource.h in CopyFiles */,
+				FF6D7A5125281399001F4186 /* STKCoreFoundationDataSource.h in CopyFiles */,
+				FF6D7A5225281399001F4186 /* STKDataSource.h in CopyFiles */,
+				FF6D7A5325281399001F4186 /* STKDataSourceWrapper.h in CopyFiles */,
+				FF6D7A5425281399001F4186 /* STKHTTPDataSource.h in CopyFiles */,
+				FF6D7A5525281399001F4186 /* STKLocalFileDataSource.h in CopyFiles */,
+				FF6D7A5625281399001F4186 /* STKMacro.h in CopyFiles */,
+				FF6D7A5725281399001F4186 /* STKQueueEntry.h in CopyFiles */,
+				FF6D7A5825281399001F4186 /* STKSpinLock.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
