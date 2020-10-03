@@ -10,28 +10,22 @@
 
 @implementation NSMutableArray (STKAudioPlayer)
 
--(void) enqueue:(id)obj
-{
+- (void) enqueue:(id)obj {
     [self insertObject:obj atIndex:0];
 }
 
--(void) skipQueue:(id)obj
-{
+- (void) skipQueue:(id)obj {
     [self addObject:obj];
 }
 
--(void) skipQueueWithQueue:(NSMutableArray*)queue
-{
-    for (id item in queue)
-    {
+- (void) skipQueueWithQueue:(NSMutableArray*)queue {
+    for (id item in queue) {
         [self addObject:item];
     }
 }
 
--(id) dequeue
-{
-    if ([self count] == 0)
-    {
+- (id) dequeue {
+    if ([self count] == 0) {
         return nil;
     }
     
@@ -42,8 +36,7 @@
     return retval;
 }
 
--(id) peek
-{
+- (id) peek {
     return [self lastObject];
 }
 

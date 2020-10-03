@@ -32,6 +32,12 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **********************************************************************************/
 
+/*
+ 
+ 数据读取入口
+ 
+ */
+
 #import <Foundation/Foundation.h>
 #include <AudioToolbox/AudioToolbox.h>
 
@@ -39,12 +45,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class STKDataSource;
 
-// data source 对外回调信息
+// stream 监听的回调接口
 @protocol STKDataSourceDelegate<NSObject>
--(void) dataSourceDataAvailable:(STKDataSource*)dataSource;
--(void) dataSourceErrorOccured:(STKDataSource*)dataSource;
--(void) dataSourceEof:(STKDataSource*)dataSource;
--(void) dataSource:(STKDataSource*)dataSource didReadStreamMetadata:(NSDictionary*)metadata;
+- (void) dataSourceDataAvailable:(STKDataSource*)dataSource;
+- (void) dataSourceErrorOccured:(STKDataSource*)dataSource;
+- (void) dataSourceEof:(STKDataSource*)dataSource;
+- (void) dataSource:(STKDataSource*)dataSource didReadStreamMetadata:(NSDictionary*)metadata;
 @end
 
 @interface STKDataSource : NSObject
@@ -58,14 +64,25 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readwrite, unsafe_unretained, nullable) id<STKDataSourceDelegate> delegate;
 @property (nonatomic, strong, nullable) NSURL *recordToFileUrl;
 
-// data source 能力
--(BOOL) registerForEvents:(NSRunLoop*)runLoop;
--(void) unregisterForEvents;
--(void) close;
+/// 1. stream 设置 client 监听事件
+/// 2. stream 和 eventRunLoop 关联（防止线程阻塞，保证监听事件的正常执行）
+- (BOOL) registerForEvents:(NSRunLoop*)runLoop;
+/// 1. stream 解绑 client
+/// 2. stream 取消 eventRunLoop 关联
+- (void) unregisterForEvents;
 
--(void) seekToOffset:(SInt64)offset;
--(int) readIntoBuffer:(UInt8*)buffer withSize:(int)size;
--(AudioFileTypeID) audioFileTypeHint;
+/// 关闭 stream 读取流
+- (void) close;
+
+- (void) seekToOffset:(SInt64)offset;
+
+/// 读取 stream size 的数据到 buffer 【0：stream 已读到最后，-1：读取出错，size：实际填充的大小 size】
+/// @param buffer 需要填充的 buffer
+/// @param size 填充的最大大小
+- (int) readIntoBuffer:(UInt8*)buffer withSize:(int)size;
+
+/// 音频格式
+- (AudioFileTypeID) audioFileTypeHint;
 
 @end
 

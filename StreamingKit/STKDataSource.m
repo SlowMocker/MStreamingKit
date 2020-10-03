@@ -37,50 +37,40 @@
 @implementation STKDataSource
 @synthesize delegate;
 
--(SInt64) length
-{
+- (SInt64) length {
     return 0;
 }
 
--(void) seekToOffset:(SInt64)offset
-{
+- (void) seekToOffset:(SInt64)offset {
 }
 
--(int) readIntoBuffer:(UInt8*)buffer withSize:(int)size
-{
+- (int) readIntoBuffer:(UInt8*)buffer withSize:(int)size {
     return -1;
 }
 
--(SInt64) position
-{
+- (SInt64) position {
     return 0;
 }
 
--(BOOL) registerForEvents:(NSRunLoop*)runLoop
-{
+- (BOOL) registerForEvents:(NSRunLoop*)runLoop {
     return NO;
 }
 
--(void) unregisterForEvents
-{
+- (void) unregisterForEvents {
 }
 
--(void) close
-{    
+- (void) close {
 }
 
--(BOOL) hasBytesAvailable
-{
+- (BOOL) hasBytesAvailable {
     return NO;
 }
 
--(AudioFileTypeID) audioFileTypeHint
-{
+- (AudioFileTypeID) audioFileTypeHint {
     return 0;
 }
 
--(BOOL) supportsSeek
-{
+- (BOOL) supportsSeek {
     return YES;
 }
 

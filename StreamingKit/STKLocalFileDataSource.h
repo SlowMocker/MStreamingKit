@@ -38,9 +38,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface STKLocalFileDataSource : STKCoreFoundationDataSource
 
-+(AudioFileTypeID) audioFileTypeHintFromFileExtension:(NSString*)fileExtension;
 @property (readonly, copy) NSString* filePath;
--(instancetype) initWithFilePath:(NSString*)filePath;
+- (instancetype) initWithFilePath:(NSString*)filePath;
+
+/// 根据本地文件路径后缀返回文件格式
+/// @param fileExtension 本地文件后缀
++ (AudioFileTypeID) audioFileTypeHintFromFileExtension:(NSString*)fileExtension;
 
 @end
 

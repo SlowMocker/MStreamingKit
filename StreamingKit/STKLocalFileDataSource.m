@@ -47,10 +47,8 @@
 @implementation STKLocalFileDataSource
 @synthesize filePath;
 
--(instancetype) initWithFilePath:(NSString*)filePathIn
-{
-    if (self = [super init])
-    {
+- (instancetype) initWithFilePath:(NSString*)filePathIn {
+    if (self = [super init]) {
         self.filePath = filePathIn;
         
         audioFileTypeHint = [STKLocalFileDataSource audioFileTypeHintFromFileExtension:filePathIn.pathExtension];
@@ -59,8 +57,7 @@
     return self;
 }
 
-+(AudioFileTypeID) audioFileTypeHintFromFileExtension:(NSString*)fileExtension
-{
++ (AudioFileTypeID) audioFileTypeHintFromFileExtension:(NSString*)fileExtension {
     static dispatch_once_t onceToken;
     static NSDictionary* fileTypesByFileExtensions;
     
@@ -83,45 +80,36 @@
     
     NSNumber* number = [fileTypesByFileExtensions objectForKey:fileExtension];
     
-    if (!number)
-    {
+    if (!number) {
         return 0;
     }
     
     return (AudioFileTypeID)number.intValue;
 }
 
--(AudioFileTypeID) audioFileTypeHint
-{
+- (AudioFileTypeID) audioFileTypeHint {
     return audioFileTypeHint;
 }
 
--(void) dealloc
-{
+- (void) dealloc {
     [self close];
 }
 
--(void) close
-{
-    if (stream)
-    {
+- (void) close {
+    if (stream) {
         [self unregisterForEvents];
 
         CFReadStreamClose(stream);
-        
         stream = 0;
     }
 }
 
--(void) open
-{
-    if (stream)
-    {
+- (void) open {
+    if (stream) {
         [self unregisterForEvents];
         
         CFReadStreamClose(stream);
         CFRelease(stream);
-        
         stream = 0;
     }
     
@@ -133,8 +121,7 @@
     NSFileManager* manager = [[NSFileManager alloc] init];
     NSDictionary* attributes = [manager attributesOfItemAtPath:filePath error:&fileError];
 
-    if (fileError)
-    {
+    if (fileError) {
         CFReadStreamClose(stream);
         CFRelease(stream);
         stream = 0;
@@ -143,8 +130,7 @@
 
     NSNumber* number = [attributes objectForKey:@"NSFileSize"];
     
-    if (number)
-    {
+    if (number) {
         length = number.longLongValue;
     }
     
@@ -153,26 +139,21 @@
     CFReadStreamOpen(stream);
 }
 
--(SInt64) position
-{
+- (SInt64) position {
     return position;
 }
 
--(SInt64) length
-{
+- (SInt64) length {
     return length;
 }
 
--(int) readIntoBuffer:(UInt8*)buffer withSize:(int)size
-{
+- (int) readIntoBuffer:(UInt8*)buffer withSize:(int)size {
     int retval = (int)CFReadStreamRead(stream, buffer, size);
 
-    if (retval > 0)
-    {
+    if (retval > 0) {
         position += retval;
     }
-    else
-    {
+    else {
         NSNumber* property = (__bridge_transfer NSNumber*)CFReadStreamCopyProperty(stream, kCFStreamPropertyFileCurrentOffset);
         
         position = property.longLongValue;
@@ -181,29 +162,24 @@
     return retval;
 }
 
--(void) seekToOffset:(SInt64)offset
-{
+- (void) seekToOffset:(SInt64)offset {
     CFStreamStatus status = kCFStreamStatusClosed;
     
-    if (stream != 0)
-    {
+    if (stream != 0) {
 		status = CFReadStreamGetStatus(stream);
     }
     
     BOOL reopened = NO;
     
-    if (status == kCFStreamStatusAtEnd || status == kCFStreamStatusClosed || status == kCFStreamStatusError)
-    {
+    if (status == kCFStreamStatusAtEnd || status == kCFStreamStatusClosed || status == kCFStreamStatusError) {
         reopened = YES;
         
         [self close];        
         [self open];
     }
     
-    if (stream == 0)
-    {
-        CFRunLoopPerformBlock(eventsRunLoop.getCFRunLoop, NSRunLoopCommonModes, ^
-        {
+    if (stream == 0) {
+        CFRunLoopPerformBlock(eventsRunLoop.getCFRunLoop, NSRunLoopCommonModes, ^ {
             [self errorOccured];
         });
         
@@ -212,21 +188,16 @@
         return;
     }
     
-    if (CFReadStreamSetProperty(stream, kCFStreamPropertyFileCurrentOffset, (__bridge CFTypeRef)[NSNumber numberWithLongLong:offset]) != TRUE)
-    {
+    if (CFReadStreamSetProperty(stream, kCFStreamPropertyFileCurrentOffset, (__bridge CFTypeRef)[NSNumber numberWithLongLong:offset]) != TRUE) {
         position = 0;
     }
-    else
-    {
+    else {
         position = offset;
     }
     
-    if (!reopened)
-    {
-        CFRunLoopPerformBlock(eventsRunLoop.getCFRunLoop, NSRunLoopCommonModes, ^
-        {
-            if ([self hasBytesAvailable])
-            {
+    if (!reopened) {
+        CFRunLoopPerformBlock(eventsRunLoop.getCFRunLoop, NSRunLoopCommonModes, ^ {
+            if ([self hasBytesAvailable]) {
                 [self dataAvailable];
             }
         });
@@ -235,8 +206,7 @@
     }
 }
 
--(NSString*) description
-{
+- (NSString*) description {
     return self->filePath;
 }
 

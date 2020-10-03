@@ -33,6 +33,7 @@
 **********************************************************************************/
 
 #import "STKDataSource.h"
+#import "Downloader.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -53,16 +54,24 @@ NS_ASSUME_NONNULL_BEGIN
     NSRunLoop* eventsRunLoop;
 }
 
+/// 数据 session
+@property (nonatomic , strong) AFHTTPSessionManager * __nullable dataSession;
+@property (atomic , strong) NSMutableData * __nullable dataM;
+
 @property (readonly) BOOL isInErrorState;
 
--(BOOL) reregisterForEvents;
+/// 1. stream 设置 client 监听事件
+/// 2. stream 和 eventRunLoop 关联（防止线程阻塞，保证监听事件的正常执行）
+- (BOOL) reregisterForEvents;
 
--(void) open;
--(void) openCompleted;
--(void) dataAvailable;
--(void) eof;
--(void) errorOccured;
--(CFStreamStatus) status;
+/// 1. 创建 stream
+/// 2. registerForEvents
+- (void) open;
+- (void) openCompleted;
+- (void) dataAvailable;
+- (void) eof;
+- (void) errorOccured;
+- (CFStreamStatus) status;
 
 @end
 
