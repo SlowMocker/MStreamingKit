@@ -30,49 +30,30 @@
  ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-**********************************************************************************/
+ **********************************************************************************/
 
-#import "STKDataSource.h"
-#import "STKAFNetworking.h"
+#import "STKCoreFoundationDataSource.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class STKCoreFoundationDataSource;
+@class STKHTTPDataSource;
 
-@interface CoreFoundationDataSourceClientInfo : NSObject
-@property (readwrite) CFReadStreamRef readStreamRef;
-@property (readwrite, retain) STKCoreFoundationDataSource* datasource;
-@end
+typedef void(^STKURLBlock)(NSURL* url);
+typedef NSURL* _Nonnull (^STKURLProvider)(void);
+typedef void(^STKAsyncURLProvider)(STKHTTPDataSource* dataSource, BOOL forSeek, STKURLBlock callback);
 
-@interface STKCoreFoundationDataSource : STKDataSource
-{
-@public
-    // 流读取指针
-    CFReadStreamRef stream;
-@protected
-    BOOL isInErrorState;
-    NSRunLoop* eventsRunLoop;
-}
+@interface STKHTTPDataSource : STKCoreFoundationDataSource
 
-/// 数据 session
-@property (nonatomic , assign) BOOL noStream;
-@property (nonatomic , strong) STKAFHTTPSessionManager * __nullable dataSession;
-@property (atomic , strong) NSMutableData * __nullable dataM;
+@property (readonly, retain) NSURL* url;
+@property (readonly) UInt32 httpStatusCode;
 
-@property (readonly) BOOL isInErrorState;
-
-/// 1. stream 设置 client 监听事件
-/// 2. stream 和 eventRunLoop 关联（防止线程阻塞，保证监听事件的正常执行）
-- (BOOL) reregisterForEvents;
-
-/// 1. 创建 stream
-/// 2. registerForEvents
-- (void) open;
-- (void) openCompleted;
-- (void) dataAvailable;
-- (void) eof;
-- (void) errorOccured;
-- (CFStreamStatus) status;
++(AudioFileTypeID) audioFileTypeHintFromMimeType:(NSString*)fileExtension;
+-(instancetype) initWithURL:(NSURL*)url;
+//-(instancetype) initWithURL:(NSURL*)url httpRequestHeaders:(NSDictionary*)httpRequestHeaders;
+//-(instancetype) initWithURLProvider:(STKURLProvider)urlProvider;
+//-(instancetype) initWithAsyncURLProvider:(STKAsyncURLProvider)asyncUrlProvider;
+-(nullable NSRunLoop*) eventsRunLoop;
+-(void) reconnect;
 
 @end
 

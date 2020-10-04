@@ -89,6 +89,13 @@ static void ReadStreamCallbackProc(CFReadStreamRef stream, CFStreamEventType eve
 }
 
 - (void) dealloc {
+    if (self.noStream) {
+        if (self.dataSession) {
+            [self.dataSession.session invalidateAndCancel];
+            self.dataSession = nil;
+        }
+        return;
+    }
     if (stream) {
         if (eventsRunLoop) {
         	[self unregisterForEvents];
@@ -98,14 +105,16 @@ static void ReadStreamCallbackProc(CFReadStreamRef stream, CFStreamEventType eve
         
         stream = 0;
     }
-    
-    if (self.dataSession) {
-        [self.dataSession.session invalidateAndCancel];
-        self.dataSession = nil;
-    }
 }
 
 - (void) close {
+    if (self.noStream) {
+        if (self.dataSession) {
+            [self.dataSession.session invalidateAndCancel];
+            self.dataSession = nil;
+        }
+        return;
+    }
     if (stream) {
         if (eventsRunLoop) {
             [self unregisterForEvents];
@@ -116,11 +125,6 @@ static void ReadStreamCallbackProc(CFReadStreamRef stream, CFStreamEventType eve
         
         stream = 0;
     }
-
-    if (self.dataSession) {
-        [self.dataSession.session invalidateAndCancel];
-        self.dataSession = nil;
-    }
 }
 
 - (void) open {
@@ -130,10 +134,16 @@ static void ReadStreamCallbackProc(CFReadStreamRef stream, CFStreamEventType eve
 }
 
 - (int) readIntoBuffer:(UInt8*)buffer withSize:(int)size {
+    if (self.noStream) {
+        return 0;
+    }
     return (int)CFReadStreamRead(stream, buffer, size);
 }
 
 - (void) unregisterForEvents {
+    if (self.noStream) {
+        return;
+    }
     if (stream) {
         CFReadStreamSetClient(stream, kCFStreamEventHasBytesAvailable | kCFStreamEventErrorOccurred | kCFStreamEventEndEncountered, NULL, NULL);
         CFReadStreamUnscheduleFromRunLoop(stream, [eventsRunLoop getCFRunLoop], kCFRunLoopCommonModes);
@@ -141,6 +151,9 @@ static void ReadStreamCallbackProc(CFReadStreamRef stream, CFStreamEventType eve
 }
 
 - (BOOL) reregisterForEvents {
+    if (self.noStream) {
+        return YES;
+    }
     if (eventsRunLoop && stream) {
         CFStreamClientContext context = {0, (__bridge void*)self, NULL, NULL, NULL};
         // stream 设置 client 做事件监听
@@ -155,6 +168,9 @@ static void ReadStreamCallbackProc(CFReadStreamRef stream, CFStreamEventType eve
 }
 
 - (BOOL) registerForEvents:(NSRunLoop*)runLoop {
+    if (self.noStream) {
+        return YES;
+    }
     eventsRunLoop = runLoop;
     
 	if (!stream) {
@@ -173,6 +189,9 @@ static void ReadStreamCallbackProc(CFReadStreamRef stream, CFStreamEventType eve
 }
 
 - (BOOL) hasBytesAvailable {
+    if (self.noStream) {
+        return NO;
+    }
     if (!stream) {
         return NO;
     }

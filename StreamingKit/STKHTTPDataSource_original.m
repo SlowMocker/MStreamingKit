@@ -38,20 +38,31 @@
 @interface STKHTTPDataSource()
 {
 @private
+    // 是否支持 seek
     BOOL supportsSeek;
+    // 状态
     UInt32 httpStatusCode;
+    //
     SInt64 seekStart;
+    // readIntoBuffer
     SInt64 relativePosition;
+    // 文件长度
     SInt64 fileLength;
+    // 无效
     int discontinuous;
+    // num
 	int requestSerialNumber;
+    
+    // 好像是 header 的数据读取
     int prefixBytesRead;
     NSData* prefixBytes;
+    
     NSMutableData* iceHeaderData;
     BOOL iceHeaderSearchComplete;
     BOOL iceHeaderAvailable;
     BOOL httpHeaderNotAvailable;
 
+    // 这难道是特么的实际音频数据，我靠！！！
     NSMutableData *_metadataData;
     int            _metadataOffset;
     int            _metadataBytesRead;
@@ -60,6 +71,7 @@
     
     NSURL* currentUrl;
     STKAsyncURLProvider asyncUrlProvider;
+    // 请求返回 header
     NSDictionary* httpHeaders;
     AudioFileTypeID audioFileTypeHint;
     NSDictionary* requestHeaders;
