@@ -80,7 +80,7 @@
     
     NSNumber* number = [fileTypesByFileExtensions objectForKey:fileExtension];
     
-    if (!number) {
+    if (number == nil) {
         return 0;
     }
     
@@ -130,7 +130,7 @@
 
     NSNumber* number = [attributes objectForKey:@"NSFileSize"];
     
-    if (number) {
+    if (number != nil) {
         length = number.longLongValue;
     }
     

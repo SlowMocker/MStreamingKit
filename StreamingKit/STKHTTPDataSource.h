@@ -47,12 +47,13 @@ typedef void(^STKAsyncURLProvider)(STKHTTPDataSource* dataSource, BOOL forSeek, 
 @property (readonly, retain) NSURL* url;
 @property (readonly) UInt32 httpStatusCode;
 
-- (instancetype) initWithURL:(NSURL*)url;
-- (nullable NSRunLoop*) eventsRunLoop;
-- (void) reconnect;
-
-/// 返回音频格式
-+ (AudioFileTypeID) audioFileTypeHintFromMimeType:(NSString*)fileExtension;
++(AudioFileTypeID) audioFileTypeHintFromMimeType:(NSString*)fileExtension;
+-(instancetype) initWithURL:(NSURL*)url;
+//-(instancetype) initWithURL:(NSURL*)url httpRequestHeaders:(NSDictionary*)httpRequestHeaders;
+//-(instancetype) initWithURLProvider:(STKURLProvider)urlProvider;
+//-(instancetype) initWithAsyncURLProvider:(STKAsyncURLProvider)asyncUrlProvider;
+-(nullable NSRunLoop*) eventsRunLoop;
+-(void) reconnect;
 
 @end
 

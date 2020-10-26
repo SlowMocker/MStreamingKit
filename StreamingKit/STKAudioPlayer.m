@@ -876,7 +876,7 @@ static void AudioFileStreamPacketsProc(void* clientData, UInt32 numberBytes, UIn
             {
                 UInt32 size = sizeof(newBasicDescription);
                 
-                AudioFileStreamGetProperty(inAudioFileStream, kAudioFileStreamProperty_DataFormat, &size, &newBasicDescription);
+                OSStatus status = AudioFileStreamGetProperty(inAudioFileStream, kAudioFileStreamProperty_DataFormat, &size, &newBasicDescription);
 
                 pthread_mutex_lock(&playerMutex);
                 

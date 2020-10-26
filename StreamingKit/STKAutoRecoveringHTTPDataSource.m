@@ -350,12 +350,10 @@ static void PopulateOptionsWithDefault(STKAutoRecoveringHTTPDataSourceOptions* o
     waitSeconds = MIN(waitSeconds + 1, 5);
 }
 
--(void) dataSourceEof:(STKDataSource*)dataSource
-{
-	NSLog(@"dataSourceEof");
-	
-    if ([self position] < [self length])
-    {
+- (void) dataSourceEof:(STKDataSource*)dataSource {
+    NSLog(@"dataSourceEof");
+    
+    if ([self position] < [self length]) {
         [self processRetryOnError];
         
         return;
