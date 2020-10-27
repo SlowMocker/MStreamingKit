@@ -60,7 +60,7 @@
 #define STK_DEFAULT_SECONDS_REQUIRED_TO_START_PLAYING (1)
 #define STK_DEFAULT_SECONDS_REQUIRED_TO_START_PLAYING_AFTER_BUFFER_UNDERRUN (7.5)
 #define STK_MAX_COMPRESSED_PACKETS_FOR_BITRATE_CALCULATION (4096)
-#define STK_DEFAULT_READ_BUFFER_SIZE (1024 * 1024)
+#define STK_DEFAULT_READ_BUFFER_SIZE (64 * 1024)
 #define STK_DEFAULT_PACKET_BUFFER_SIZE (2048)
 #define STK_DEFAULT_GRACE_PERIOD_AFTER_SEEK_SECONDS (0.5)
 
@@ -289,6 +289,7 @@ static AudioStreamBasicDescription recordAudioStreamBasicDescription;
     
 	void(^stopBackBackgroundTaskBlock)(void);
     
+    // wuwenhao
 //    int32_t seekVersion;
     atomic_int seekVersion;
     os_unfair_lock seekLock;
@@ -555,7 +556,7 @@ static void AudioFileStreamPacketsProc(void* clientData, UInt32 numberBytes, UIn
         pcmBufferTotalFrameCount = pcmAudioBuffer->mDataByteSize / pcmBufferFrameSizeInBytes;
         
         readBufferSize = options.readBufferSize;
-        readBuffer = calloc(sizeof(UInt8), 1024*1024);
+        readBuffer = calloc(sizeof(UInt8), readBufferSize);
         
         pthread_mutexattr_t attr;
         
@@ -781,7 +782,6 @@ static void AudioFileStreamPacketsProc(void* clientData, UInt32 numberBytes, UIn
     {
         LOGINFO(([NSString stringWithFormat:@"Playing: %@", [queueItemId description]]));
         
-#warning 为啥 AUGraph 没有启动就要开启后台任务，提前保活吗？
 		if (![self audioGraphIsRunning])
 		{
 			[self startSystemBackgroundTask];
@@ -789,7 +789,6 @@ static void AudioFileStreamPacketsProc(void* clientData, UInt32 numberBytes, UIn
         
         [self clearQueue];
 
-        // STKDataSource 转 STKQueueEntry
         [upcomingQueue enqueue:[[STKQueueEntry alloc] initWithDataSource:dataSourceIn andQueueItemId:queueItemId]];
         
         self.internalState = STKAudioPlayerInternalStatePendingNext;
@@ -876,7 +875,7 @@ static void AudioFileStreamPacketsProc(void* clientData, UInt32 numberBytes, UIn
             {
                 UInt32 size = sizeof(newBasicDescription);
                 
-                OSStatus status = AudioFileStreamGetProperty(inAudioFileStream, kAudioFileStreamProperty_DataFormat, &size, &newBasicDescription);
+                AudioFileStreamGetProperty(inAudioFileStream, kAudioFileStreamProperty_DataFormat, &size, &newBasicDescription);
 
                 pthread_mutex_lock(&playerMutex);
                 
@@ -1126,9 +1125,11 @@ static void AudioFileStreamPacketsProc(void* clientData, UInt32 numberBytes, UIn
     
     if (!seekAlreadyRequested)
     {
-        // 'OSAtomicIncrement32' is deprecated: first deprecated in iOS 10.0 - Use atomic_fetch_add_explicit(memory_order_relaxed) from <stdatomic.h> instead
+// wuwenhao
+//         'OSAtomicIncrement32' is deprecated: first deprecated in iOS 10.0 - Use atomic_fetch_add_explicit(memory_order_relaxed) from <stdatomic.h> instead
 //        OSAtomicIncrement32(&seekVersion);
         atomic_fetch_add_explicit(&seekVersion, 1, memory_order_relaxed);
+        
         lockUnlock(&seekLock);
         
         [self wakeupPlaybackThread];
@@ -1428,6 +1429,7 @@ static void AudioFileStreamPacketsProc(void* clientData, UInt32 numberBytes, UIn
         
         if (currentlyPlayingEntry && currentlyPlayingEntry->parsedHeader && [currentlyPlayingEntry calculatedBitRate] > 0.0)
         {
+            // wuwenhao
 //            int32_t originalSeekVersion;
             atomic_int originalSeekVersion;
             BOOL originalSeekToTimeRequested;
@@ -1591,27 +1593,26 @@ static void AudioFileStreamPacketsProc(void* clientData, UInt32 numberBytes, UIn
         return;
     }
     
-//    if (!currentlyReadingEntry.dataSource.hasBytesAvailable)
-//    {
-//        return;
-//    }
-    
+    if (!currentlyReadingEntry.dataSource.hasBytesAvailable)
+    {
+        return;
+    }
     
     int read = [currentlyReadingEntry.dataSource readIntoBuffer:readBuffer withSize:readBufferSize];
     
-//    if (read == 0)
-//    {
-//        return;
-//    }
+    if (read == 0)
+    {
+        return;
+    }
     
     if (audioFileStream == 0)
     {
         error = AudioFileStreamOpen((__bridge void*)self, AudioFileStreamPropertyListenerProc, AudioFileStreamPacketsProc, dataSourceIn.audioFileTypeHint, &audioFileStream);
-
+        
         if (error)
         {
             [self unexpectedError:STKAudioPlayerErrorAudioSystemError];
-
+            
             return;
         }
     }
@@ -1635,8 +1636,8 @@ static void AudioFileStreamPacketsProc(void* clientData, UInt32 numberBytes, UIn
         flags = kAudioFileStreamParseFlag_Discontinuity;
     }
     
-//    if (audioFileStream)
-//    {
+    if (audioFileStream)
+    {
         error = AudioFileStreamParseBytes(audioFileStream, read, readBuffer, flags);
         
         if (error)
@@ -1658,7 +1659,7 @@ static void AudioFileStreamPacketsProc(void* clientData, UInt32 numberBytes, UIn
         }
         
         lockUnlock(&currentEntryReferencesLock);
-//    }
+    }
 }
 
 -(void) dataSourceErrorOccured:(STKDataSource*)dataSourceIn
@@ -2194,6 +2195,7 @@ static BOOL GetHardwareCodecClassDesc(UInt32 formatId, AudioClassDescription* cl
 {
     OSStatus status;
     
+    // wuwenhao
     AudioComponentDescription descT = {0};
     descT.componentType = playbackRateUnitDescription.componentType; // kAudioUnitType_FormatConverter
     descT.componentSubType = kAudioUnitSubType_AUConverter; // kAudioUnitSubType_AUiPodTimeOther -> kAudioUnitSubType_AUConverter
@@ -2673,18 +2675,19 @@ OSStatus AudioConverterCallback(AudioConverterRef inAudioConverter, UInt32* ioNu
 			
 			packetSize = packetDescriptionsIn[i].mDataByteSize;
             
-            // wuwenhao
-            atomic_int newValue = currentlyReadingEntry->processedPacketsCount;
-			
-            // 'OSAtomicAdd32' is deprecated: first deprecated in iOS 10.0 - Use atomic_fetch_add_explicit(memory_order_relaxed) from <stdatomic.h> instead
+//            // 'OSAtomicAdd32' is deprecated: first deprecated in iOS 10.0 - Use atomic_fetch_add_explicit(memory_order_relaxed) from <stdatomic.h> instead
 //            OSAtomicAdd32((int32_t)packetSize, &currentlyReadingEntry->processedPacketsSizeTotal);
-            // wuwenhao
-            atomic_fetch_add_explicit(&newValue, packetSize, memory_order_relaxed);
-            
-            // 'OSAtomicAdd32' is deprecated: first deprecated in iOS 10.0 - Use atomic_fetch_add_explicit(memory_order_relaxed) from <stdatomic.h> instead
+//            // 'OSAtomicAdd32' is deprecated: first deprecated in iOS 10.0 - Use atomic_fetch_add_explicit(memory_order_relaxed) from <stdatomic.h> instead
 //            OSAtomicIncrement32(&currentlyReadingEntry->processedPacketsCount);
+
             // wuwenhao
-            atomic_fetch_add_explicit(&newValue, 1, memory_order_relaxed);
+            atomic_int newValue0 = currentlyReadingEntry->processedPacketsSizeTotal;
+            atomic_fetch_add_explicit(&newValue0, packetSize, memory_order_relaxed);
+            currentlyReadingEntry->processedPacketsSizeTotal = newValue0;
+            
+            atomic_int newValue1 = currentlyReadingEntry->processedPacketsCount;
+            atomic_fetch_add_explicit(&newValue1, 1, memory_order_relaxed);
+            currentlyReadingEntry->processedPacketsCount = newValue1;
         }
     }
     
@@ -3135,12 +3138,13 @@ static OSStatus OutputRenderCallback(void* inRefCon, AudioUnitRenderActionFlags*
 		{
 			if (totalFramesCopied == 0)
 			{
-                // wuwenhao
-                atomic_int newValue = audioPlayer->waitingForDataAfterSeekFrameCount;
                 // 'OSAtomicAdd32' is deprecated: first deprecated in iOS 10.0 - Use atomic_fetch_add_explicit(memory_order_relaxed) from <stdatomic.h> instead
 //				OSAtomicAdd32(inNumberFrames - totalFramesCopied, &audioPlayer->waitingForDataAfterSeekFrameCount);
+               
                 // wuwenhao
+                atomic_int newValue = audioPlayer->waitingForDataAfterSeekFrameCount;
                 atomic_fetch_add_explicit(&newValue, inNumberFrames - totalFramesCopied, memory_order_relaxed);
+                audioPlayer->waitingForDataAfterSeekFrameCount = newValue;
 				
 				if (audioPlayer->waitingForDataAfterSeekFrameCount > audioPlayer->framesRequiredBeforeWaitingForDataAfterSeekBecomesPlaying)
 				{
@@ -3165,7 +3169,7 @@ static OSStatus OutputRenderCallback(void* inRefCon, AudioUnitRenderActionFlags*
 		for (int i = 0; i < count; i++)
 		{
 			STKFrameFilterEntry* entry = [frameFilters objectAtIndex:i];
-			//wuwenhao 这里回调 PCM
+			// wuwenhao 这里回调 PCM
 			entry->filter(asbd.mChannelsPerFrame, asbd.mBytesPerFrame, inNumberFrames, ioData->mBuffers[0].mData);
 		}
 	}

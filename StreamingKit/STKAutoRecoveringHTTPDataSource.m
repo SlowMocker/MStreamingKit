@@ -180,13 +180,13 @@ static void PopulateOptionsWithDefault(STKAutoRecoveringHTTPDataSourceOptions* o
         if ([self hasGotNetworkConnection])
         {
             uint64_t currentTicks = GetTickCount();
-
+            
             if (((currentTicks - ticksWhenLastDataReceived) / 1000) >= options.inactivePeriodBeforeReconnectSeconds)
             {
                 serial++;
-
+                
                 NSLog(@"timeoutTimerTick %lld/%lld", self.position, self.length);
-
+                
                 [self attemptReconnectWithSerial:@(serial)];
             }
         }
@@ -287,10 +287,10 @@ static void PopulateOptionsWithDefault(STKAutoRecoveringHTTPDataSourceOptions* o
 
 -(void) dataSourceDataAvailable:(STKDataSource*)dataSource
 {
-//    if (![self.innerDataSource hasBytesAvailable])
-//    {
-//        return;
-//    }
+    if (![self.innerDataSource hasBytesAvailable])
+    {
+        return;
+    }
     
     serial++;
     waitSeconds = 1;
@@ -350,10 +350,12 @@ static void PopulateOptionsWithDefault(STKAutoRecoveringHTTPDataSourceOptions* o
     waitSeconds = MIN(waitSeconds + 1, 5);
 }
 
-- (void) dataSourceEof:(STKDataSource*)dataSource {
-    NSLog(@"dataSourceEof");
-    
-    if ([self position] < [self length]) {
+-(void) dataSourceEof:(STKDataSource*)dataSource
+{
+	NSLog(@"dataSourceEof");
+	
+    if ([self position] < [self length])
+    {
         [self processRetryOnError];
         
         return;

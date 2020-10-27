@@ -30,39 +30,30 @@
  ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-**********************************************************************************/
+ **********************************************************************************/
 
-#import "STKDataSource.h"
+#import "STKCoreFoundationDataSource.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class STKCoreFoundationDataSource;
+@class STKHTTPDataSource;
 
-@interface CoreFoundationDataSourceClientInfo : NSObject
-@property (readwrite) CFReadStreamRef readStreamRef;
-@property (readwrite, retain) STKCoreFoundationDataSource* datasource;
-@end
+typedef void(^STKURLBlock)(NSURL* url);
+typedef NSURL* _Nonnull (^STKURLProvider)(void);
+typedef void(^STKAsyncURLProvider)(STKHTTPDataSource* dataSource, BOOL forSeek, STKURLBlock callback);
 
-@interface STKCoreFoundationDataSource : STKDataSource
-{
-@public
-    // 流读取指针
-    CFReadStreamRef stream;
-@protected
-    BOOL isInErrorState;
-    NSRunLoop* eventsRunLoop;
-}
+@interface STKHTTPDataSource : STKCoreFoundationDataSource
 
-@property (readonly) BOOL isInErrorState;
+@property (readonly, retain) NSURL* url;
+@property (readonly) UInt32 httpStatusCode;
 
--(BOOL) reregisterForEvents;
-
--(void) open;
--(void) openCompleted;
--(void) dataAvailable;
--(void) eof;
--(void) errorOccured;
--(CFStreamStatus) status;
++(AudioFileTypeID) audioFileTypeHintFromMimeType:(NSString*)fileExtension;
+-(instancetype) initWithURL:(NSURL*)url;
+-(instancetype) initWithURL:(NSURL*)url httpRequestHeaders:(NSDictionary*)httpRequestHeaders;
+-(instancetype) initWithURLProvider:(STKURLProvider)urlProvider;
+-(instancetype) initWithAsyncURLProvider:(STKAsyncURLProvider)asyncUrlProvider;
+-(nullable NSRunLoop*) eventsRunLoop;
+-(void) reconnect;
 
 @end
 

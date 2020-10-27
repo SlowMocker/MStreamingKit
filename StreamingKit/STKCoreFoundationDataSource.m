@@ -34,31 +34,27 @@
 
 #import "STKCoreFoundationDataSource.h"
 
-
-/// stream 事件监听
-/// @param stream 被监听的 stream
-/// @param eventType kCFStreamEventHasBytesAvailable | kCFStreamEventErrorOccurred | kCFStreamEventEndEncountered
-/// @param inClientInfo dataSource 信息
-static void ReadStreamCallbackProc(CFReadStreamRef stream, CFStreamEventType eventType, void* inClientInfo) {
+// 流读取相关信息（状态信息）回调
+static void ReadStreamCallbackProc(CFReadStreamRef stream, CFStreamEventType eventType, void* inClientInfo)
+{
 	STKCoreFoundationDataSource* datasource = (__bridge STKCoreFoundationDataSource*)inClientInfo;
     
-    switch (eventType) {
-        case kCFStreamEventErrorOccurred: {
+    switch (eventType)
+    {
+        case kCFStreamEventErrorOccurred:
+        {
             [datasource errorOccured];
             break;
         }
-        case kCFStreamEventEndEncountered: {
+        case kCFStreamEventEndEncountered:
             [datasource eof];
             break;
-        }
-        case kCFStreamEventHasBytesAvailable: {
+        case kCFStreamEventHasBytesAvailable:
             [datasource dataAvailable];
             break;
-        }
-        case kCFStreamEventOpenCompleted: {
+        case kCFStreamEventOpenCompleted:
             [datasource openCompleted];
             break;
-        }
         default:
             break;
     }
@@ -70,34 +66,34 @@ static void ReadStreamCallbackProc(CFReadStreamRef stream, CFStreamEventType eve
 
 @implementation STKCoreFoundationDataSource
 
-- (BOOL) isInErrorState {
+-(BOOL) isInErrorState
+{
     return self->isInErrorState;
 }
 
-- (void) dataAvailable {
+-(void) dataAvailable
+{
     [self.delegate dataSourceDataAvailable:self];
 }
 
-- (void) eof {
+-(void) eof
+{
     [self.delegate dataSourceEof:self];
 }
 
-- (void) errorOccured {
+-(void) errorOccured
+{
     self->isInErrorState = YES;
     
     [self.delegate dataSourceErrorOccured:self];
 }
 
-- (void) dealloc {
-    if (self.noStream) {
-        if (self.dataSession) {
-            [self.dataSession.session invalidateAndCancel];
-            self.dataSession = nil;
-        }
-        return;
-    }
-    if (stream) {
-        if (eventsRunLoop) {
+-(void) dealloc
+{
+    if (stream)
+    {
+        if (eventsRunLoop)
+        {
         	[self unregisterForEvents];
         }
         
@@ -107,16 +103,12 @@ static void ReadStreamCallbackProc(CFReadStreamRef stream, CFStreamEventType eve
     }
 }
 
-- (void) close {
-    if (self.noStream) {
-        if (self.dataSession) {
-            [self.dataSession.session invalidateAndCancel];
-            self.dataSession = nil;
-        }
-        return;
-    }
-    if (stream) {
-        if (eventsRunLoop) {
+-(void) close
+{
+    if (stream)
+    {
+        if (eventsRunLoop)
+        {
             [self unregisterForEvents];
         }
         
@@ -127,38 +119,34 @@ static void ReadStreamCallbackProc(CFReadStreamRef stream, CFStreamEventType eve
     }
 }
 
-- (void) open {
+-(void) open
+{
 }
 
-- (void) seekToOffset:(SInt64)offset {
+-(void) seekToOffset:(SInt64)offset
+{
 }
 
-- (int) readIntoBuffer:(UInt8*)buffer withSize:(int)size {
-    if (self.noStream) {
-        return 0;
-    }
+-(int) readIntoBuffer:(UInt8*)buffer withSize:(int)size
+{
     return (int)CFReadStreamRead(stream, buffer, size);
 }
 
-- (void) unregisterForEvents {
-    if (self.noStream) {
-        return;
-    }
-    if (stream) {
+-(void) unregisterForEvents
+{
+    if (stream)
+    {
         CFReadStreamSetClient(stream, kCFStreamEventHasBytesAvailable | kCFStreamEventErrorOccurred | kCFStreamEventEndEncountered, NULL, NULL);
         CFReadStreamUnscheduleFromRunLoop(stream, [eventsRunLoop getCFRunLoop], kCFRunLoopCommonModes);
     }
 }
 
-- (BOOL) reregisterForEvents {
-    if (self.noStream) {
-        return YES;
-    }
-    if (eventsRunLoop && stream) {
+-(BOOL) reregisterForEvents
+{
+    if (eventsRunLoop && stream)
+    {
         CFStreamClientContext context = {0, (__bridge void*)self, NULL, NULL, NULL};
-        // stream 设置 client 做事件监听
         CFReadStreamSetClient(stream, kCFStreamEventHasBytesAvailable | kCFStreamEventErrorOccurred | kCFStreamEventEndEncountered, ReadStreamCallbackProc, &context);
-        // stream 和 runloop 关联，防止线程阻塞，保证回调正常执行
         CFReadStreamScheduleWithRunLoop(stream, [eventsRunLoop getCFRunLoop], kCFRunLoopCommonModes);
         
         return YES;
@@ -167,13 +155,12 @@ static void ReadStreamCallbackProc(CFReadStreamRef stream, CFStreamEventType eve
     return NO;
 }
 
-- (BOOL) registerForEvents:(NSRunLoop*)runLoop {
-    if (self.noStream) {
-        return YES;
-    }
+-(BOOL) registerForEvents:(NSRunLoop*)runLoop
+{
     eventsRunLoop = runLoop;
     
-	if (!stream) {
+	if (!stream)
+    {
 		// Will register when they open or seek
 		
         return YES;
@@ -188,25 +175,28 @@ static void ReadStreamCallbackProc(CFReadStreamRef stream, CFStreamEventType eve
     return YES;
 }
 
-- (BOOL) hasBytesAvailable {
-    if (self.noStream) {
-        return NO;
-    }
-    if (!stream) {
+-(BOOL) hasBytesAvailable
+{
+    if (!stream)
+    {
         return NO;
     }
     
     return CFReadStreamHasBytesAvailable(stream);
 }
 
-- (CFStreamStatus) status {
-    if (stream) {
+-(CFStreamStatus) status
+{
+    if (stream)
+    {
         return CFReadStreamGetStatus(stream);
     }
+    
     return 0;
 }
 
-- (void) openCompleted {
+-(void) openCompleted
+{
 }
 
 @end
